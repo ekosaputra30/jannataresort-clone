@@ -11,6 +11,18 @@ body {
   }
 }
 
+section {
+  position: relative;
+}
+
+.section {
+  padding: 50px 0;
+
+  @include media_breakpoint(md) {
+    padding: 150px;
+  }
+}
+
 .btn {
   display: inline-block;
   font: {
