@@ -1,9 +1,9 @@
 import { api } from '~/utils/helpers/http'
 
-const getHeroSlider = () => api.get('/homepage.json')
+const getHomepage = () => api.get('/homepage.json')
 
 const homepageRepositories = {
-  getHeroSlider,
+  getHomepage,
 }
 
 export default homepageRepositories
