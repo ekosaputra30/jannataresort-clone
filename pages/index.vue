@@ -5,6 +5,7 @@
     <TheStay :datastay="datastay" />
     <TheDinner :datadinner="dinner" />
     <TheRelaxing :datarelaxing="relaxing" />
+    <Testimonial :datatestimonial="testimonials" />
   </main>
 </template>
 
@@ -15,10 +16,18 @@ import TheResort from '~/components/homepage/the-resort'
 import TheStay from '~/components/homepage/the-stay'
 import TheDinner from '~/components/homepage/dinner'
 import TheRelaxing from '~/components/homepage/relaxing'
+import Testimonial from '~/components/homepage/testimonial'
 
 export default {
   name: 'IndexPage',
-  components: { Heroslider, TheResort, TheStay, TheDinner, TheRelaxing },
+  components: {
+    Heroslider,
+    TheResort,
+    TheStay,
+    TheDinner,
+    TheRelaxing,
+    Testimonial,
+  },
   data() {
     return {
       herosliders: [],
@@ -26,6 +35,7 @@ export default {
       datastay: [],
       dinner: null,
       relaxing: null,
+      testimonials: [],
     }
   },
   methods: {
@@ -38,6 +48,7 @@ export default {
         this.datastay = response[2].model
         this.dinner = response[3].model
         this.relaxing = response[4].model
+        this.testimonials = response[5].model.dataSlider
       } catch (error) {
         console.log(error)
       }
