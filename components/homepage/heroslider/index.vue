@@ -1,6 +1,6 @@
 <template>
   <!-- banner section -->
-  <section id="banner_section" class="banner_section">
+  <section v-if="dataSliders" id="banner_section" class="banner_section">
     <div
       ref="q_slide"
       autoplay
