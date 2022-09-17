@@ -1,12 +1,42 @@
 <template>
-  <main class="main">
-    <Heroslider :data-sliders="herosliders" />
-    <TheResort :dataresort="resort" />
-    <TheStay :datastay="datastay" />
-    <TheDinner :datadinner="dinner" />
-    <TheRelaxing :datarelaxing="relaxing" />
-    <Testimonial :datatestimonial="testimonials" />
-    <Footer />
+  <main class="main" data-scroll-container>
+    <Heroslider
+      data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      :data-sliders="herosliders"
+    />
+    <TheResort
+      data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      :dataresort="resort"
+    />
+    <TheStay
+      data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      :datastay="datastay"
+    />
+    <TheDinner
+      data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      :datadinner="dinner"
+    />
+    <TheRelaxing
+      data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      :datarelaxing="relaxing"
+    />
+    <Testimonial
+      data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      :datatestimonial="testimonials"
+    />
+    <Footer data-scroll-section data-scroll data-scroll-repeat />
   </main>
 </template>
 
@@ -39,6 +69,7 @@ export default {
       dinner: null,
       relaxing: null,
       testimonials: [],
+      scroller: null,
     }
   },
   methods: {
@@ -56,9 +87,21 @@ export default {
         console.log(error)
       }
     },
+    initScroller() {
+      this.scroller = new this.locomotiveScroll({
+        el: document.querySelector('[data-scroll-container]'),
+        smooth: true,
+      })
+    },
   },
   created() {
     this.getHomepage()
+  },
+  mounted() {
+    this.initScroller()
+  },
+  updated() {
+    this.scroller.update()
   },
 }
 </script>
