@@ -24,9 +24,20 @@ $displays: (
   inherit
 );
 $prefix: 'd';
+$sizes: (sm 480px, md 768px, lg 992px, xl 1200px);
 
 @each $display in $displays {
   .#{$prefix}-#{$display} {
     display: $display;
+  }
+}
+
+@each $sizeLabel, $value in $sizes {
+  @each $display in $displays {
+    @media only screen and (min-width: #{$value}) {
+      .#{$prefix}-#{$sizeLabel}-#{$display} {
+        display: $display;
+      }
+    }
   }
 }

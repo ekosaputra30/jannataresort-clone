@@ -1,10 +1,15 @@
 <template>
-  <nuxt />
+  <div>
+    <nuxt />
+    <Footer />
+  </div>
 </template>
 
 <script>
+import Footer from '~/components/footer'
 export default {
   name: 'Default',
+  components: { Footer },
 }
 </script>
 
