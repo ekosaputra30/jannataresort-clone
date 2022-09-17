@@ -1,26 +1,16 @@
 import homepageRepositories from '~/core/repositories/homepage'
 
-const getHeroSlider = async () => {
+const getHomepage = async () => {
   try {
-    const response = await homepageRepositories.getHomepage()
-    return response.data.components[0]
-  } catch (error) {
-    throw error
-  }
-}
-
-const getResortSection = async () => {
-  try {
-    const response = await homepageRepositories.getHomepage()
-    return response.data.components[1]
+    const { data } = await homepageRepositories.getHomepage()
+    return data.components
   } catch (error) {
     throw error
   }
 }
 
 const homepageServices = {
-  getHeroSlider,
-  getResortSection,
+  getHomepage,
 }
 
 export default homepageServices
