@@ -1,6 +1,12 @@
 @import 'mixins';
 @import 'reset.scss';
 @import 'flexbox.scss';
+@import 'display';
+
+:root {
+  --headling_letter-spacing: 5px;
+  --resort-color: #5f5c68;
+}
 
 html,
 body {
@@ -9,6 +15,9 @@ body {
     size: 12px !important;
     weight: 400;
   }
+  line-height: 1.8;
+  word-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
 }
 
 section {
@@ -19,8 +28,42 @@ section {
   padding: 50px 0;
 
   @include media_breakpoint(md) {
-    padding: 150px;
+    padding: 150px 0 100px;
   }
+
+  &--inner {
+    padding: {
+      left: 20px;
+      right: 20px;
+    }
+    @include media_breakpoint(md) {
+      padding: {
+        left: 12rem;
+        right: 12rem;
+      }
+    }
+  }
+
+  &__headline {
+    font: {
+      family: 'Playfair Display';
+      size: 24px;
+    }
+    letter-spacing: var(--headling_letter-spacing);
+    line-height: 28px;
+    margin-bottom: 25px;
+    @include media_breakpoint(md) {
+      font: {
+        size: 35px;
+      }
+      line-height: 1.3;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.h-100 {
+  height: 100%;
 }
 
 .btn {
@@ -30,7 +73,7 @@ section {
     size: 10px;
   }
   letter-spacing: 1px;
-  line-height: 1.3;
+  // line-height: 1.3;
   padding: 20px 0;
   position: relative;
   text-decoration: none;
@@ -38,6 +81,11 @@ section {
 
   &--white {
     color: white;
+  }
+
+  &--green {
+    color: #679334;
+    font-size: 12px;
   }
 
   &__outline {

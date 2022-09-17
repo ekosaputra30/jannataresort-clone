@@ -1,5 +1,6 @@
 $grid-rows: 12;
 $sizes: (sm 480px, md 768px, lg 992px, xl 1200px);
+$directions: (row, column);
 $prefix: 'w';
 $padding: 6px 4px;
 
@@ -12,14 +13,14 @@ $padding: 6px 4px;
   flex-wrap: wrap;
 
   > div[class*='#{$prefix}-'] {
-    padding: $padding;
+    // padding: $padding;
     box-sizing: border-box;
   }
 
-  > div:not([class*='#{$prefix}-']) {
-    flex: 1;
-    padding: $padding;
-  }
+  // > div:not([class*='#{$prefix}-']) {
+  //   flex: 1;
+  //   padding: $padding;
+  // }
 
   @for $i from 1 through $grid-rows {
     .#{$prefix}-#{$i} {
@@ -66,6 +67,12 @@ $padding: 6px 4px;
   }
 }
 
+@each $direction in $directions {
+  .flex-#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
 @each $sizeLabel, $value in $sizes {
   @media only screen and (min-width: #{$value}) {
     @for $i from 1 through $grid-rows {
@@ -78,7 +85,18 @@ $padding: 6px 4px;
     }
 
     .container {
-      width: if(index($sizes, $sizeLabel $value) > 2, $value, 99%);
+      max-width: if(index($sizes, $sizeLabel $value) > 2, $value, 99%);
+      width: 100%;
+    }
+
+    .row-#{$sizeLabel}-reverse {
+      flex-direction: row-reverse;
+    }
+
+    @each $direction in $directions {
+      .flex-#{$sizeLabel}-#{$direction} {
+        flex-direction: $direction;
+      }
     }
   }
 }
