@@ -2,6 +2,7 @@
   <main class="main">
     <Heroslider :data-sliders="herosliders" />
     <TheResort :dataresort="resort" />
+    <TheStay :datastay="datastay" />
   </main>
 </template>
 
@@ -9,14 +10,16 @@
 import homepageServices from '~/core/services/homepage'
 import Heroslider from '~/components/homepage/heroslider'
 import TheResort from '~/components/homepage/the-resort'
+import TheStay from '~/components/homepage/the-stay'
 
 export default {
   name: 'IndexPage',
-  components: { Heroslider, TheResort },
+  components: { Heroslider, TheResort, TheStay },
   data() {
     return {
       herosliders: [],
       resort: null,
+      datastay: [],
     }
   },
   methods: {
@@ -26,7 +29,7 @@ export default {
 
         this.herosliders = response[0].model.dataSlider
         this.resort = response[1].model
-        console.log(this.resort)
+        this.datastay = response[2].model
       } catch (error) {
         console.log(error)
       }
