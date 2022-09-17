@@ -33,7 +33,11 @@ section {
   }
 
   &--bgimage {
+    background-color: black;
+    min-height: 120vh;
+    overflow: hidden;
     padding: 0;
+    position: relative;
   }
 
   &--inner {

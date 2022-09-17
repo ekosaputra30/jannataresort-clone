@@ -44,10 +44,6 @@ export default {
 <style lang="scss">
 @import '~assets/styles/mixins.scss';
 .section__relaxing {
-  background-color: black;
-  min-height: 120vh;
-  overflow: hidden;
-  position: relative;
   .bg {
     background: {
       repeat: no-repeat;
