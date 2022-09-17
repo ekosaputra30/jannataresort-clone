@@ -87,6 +87,11 @@ section {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
+  transition: all 0.4s;
+
+  &:hover {
+    transition: all 0.4s;
+  }
 
   &--white {
     color: white;
@@ -96,6 +101,17 @@ section {
   &--green {
     color: #679334;
     font-size: 12px;
+    &-fill {
+      border: 1px solid transparent;
+      background-color: #679334;
+      color: white;
+
+      &:hover {
+        background-color: white;
+        border: 1px solid #679334;
+        color: #679334;
+      }
+    }
   }
 
   &__outline {
