@@ -3,7 +3,7 @@
     <div v-if="dataresort" class="container section--inner">
       <div class="row row-lg-reverse theresort">
         <div class="w-12 w-lg-6">
-          <div class="row flex-column theresort__content align-center h-100">
+          <div class="row flex-column theresort__content h-100">
             <div class="theresort__title section__headline">
               <h2 v-html="dataresort.title"></h2>
             </div>
@@ -76,6 +76,7 @@ export default {
       top: 50px;
     }
     @include media-breakpoint(md) {
+      justify-content: center;
       padding: {
         bottom: 0px;
         left: 100px;
