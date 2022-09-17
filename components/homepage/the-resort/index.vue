@@ -13,7 +13,7 @@
             <div class="theresort__link">
               <a
                 :href="dataresort.link.url"
-                class="btn btn--green"
+                class="btn btn--green btn--hover-underline"
                 v-html="dataresort.link.title"
               ></a>
             </div>

@@ -23,7 +23,7 @@
           <div class="relaxing__link">
             <a
               :href="datarelaxing.link.url"
-              class="btn btn--white"
+              class="btn btn--white btn--hover-underline"
               v-html="datarelaxing.link.title"
             ></a>
           </div>

@@ -23,7 +23,7 @@
           <div class="dinner__link">
             <a
               :href="datadinner.link.url"
-              class="btn btn--green"
+              class="btn btn--green btn--hover-underline"
               v-html="datadinner.link.title"
             ></a>
           </div>
