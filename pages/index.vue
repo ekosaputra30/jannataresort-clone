@@ -6,6 +6,7 @@
     <TheDinner :datadinner="dinner" />
     <TheRelaxing :datarelaxing="relaxing" />
     <Testimonial :datatestimonial="testimonials" />
+    <Footer />
   </main>
 </template>
 
@@ -17,6 +18,7 @@ import TheStay from '~/components/homepage/the-stay'
 import TheDinner from '~/components/homepage/dinner'
 import TheRelaxing from '~/components/homepage/relaxing'
 import Testimonial from '~/components/homepage/testimonial'
+import Footer from '~/components/footer'
 
 export default {
   name: 'IndexPage',
@@ -27,6 +29,7 @@ export default {
     TheDinner,
     TheRelaxing,
     Testimonial,
+    Footer,
   },
   data() {
     return {
