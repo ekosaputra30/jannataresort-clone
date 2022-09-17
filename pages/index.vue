@@ -1,7 +1,7 @@
 <template>
   <main class="main">
-    <Heroslider :data-sliders="dataSliders" />
-    <TheResort :data-resort="dataResort" />
+    <Heroslider :data-sliders="herosliders" />
+    <TheResort :dataresort="resort" />
   </main>
 </template>
 
@@ -15,31 +15,25 @@ export default {
   components: { Heroslider, TheResort },
   data() {
     return {
-      dataSliders: [],
-      dataResort: [],
+      herosliders: [],
+      resort: null,
     }
   },
-  mounted() {
-    this.getHeroSlider()
-    this.getResort()
-  },
   methods: {
-    getHeroSlider: async function () {
+    async getHomepage() {
       try {
-        const { model } = await homepageServices.getHeroSlider()
-        this.dataSliders = model.dataSlider
+        let response = await homepageServices.getHomepage()
+
+        this.herosliders = response[0].model.dataSlider
+        this.resort = response[1].model
+        console.log(this.resort)
       } catch (error) {
         console.log(error)
       }
     },
-    getResort: async function () {
-      try {
-        const { model } = await homepageServices.getResortSection()
-        this.dataResort = model
-      } catch (error) {
-        console.log(error)
-      }
-    },
+  },
+  created() {
+    this.getHomepage()
   },
 }
 </script>
