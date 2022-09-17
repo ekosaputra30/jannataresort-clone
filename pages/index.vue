@@ -4,7 +4,7 @@
     <TheResort :dataresort="resort" />
     <TheStay :datastay="datastay" />
     <TheDinner :datadinner="dinner" />
-    <TheRelaxing />
+    <TheRelaxing :datarelaxing="relaxing" />
   </main>
 </template>
 
