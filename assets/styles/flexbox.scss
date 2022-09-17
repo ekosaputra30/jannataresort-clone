@@ -42,29 +42,29 @@ $padding: 6px 4px;
     }
   }
 
-  @each $classLabel,
-    $cssValue
-      in (align-start flex-start, align-center center, align-end flex-end)
-  {
-    > div[class*='#{$prefix}-'].#{$classLabel} {
-      align-self: $cssValue;
-    }
-  }
+  // @each $classLabel,
+  //   $cssValue
+  //     in (align-start flex-start, align-center center, align-end flex-end)
+  // {
+  //   > div[class*='#{$prefix}-'].#{$classLabel} {
+  //     align-self: $cssValue;
+  //   }
+  // }
 
-  @each $classLabel,
-    $cssValue
-      in (
-        align-start flex-start,
-        align-center center,
-        align-end flex-end,
-        space-around space-around,
-        space-between space-between
-      )
-  {
-    &.#{$classLabel} {
-      justify-content: $cssValue;
-    }
-  }
+  // @each $classLabel,
+  //   $cssValue
+  //     in (
+  //       align-start flex-start,
+  //       align-center center,
+  //       align-end flex-end,
+  //       space-around space-around,
+  //       space-between space-between
+  //     )
+  // {
+  //   &.#{$classLabel} {
+  //     justify-content: $cssValue;
+  //   }
+  // }
 }
 
 @each $direction in $directions {
