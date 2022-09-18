@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import locomotiveScroll from 'locomotive-scroll'
+import LocomotiveScroll from 'locomotive-scroll'
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
-Object.defineProperty(Vue.prototype, 'locomotiveScroll', {
-  value: locomotiveScroll,
+Object.defineProperty(Vue.prototype, 'LocomotiveScroll', {
+  value: LocomotiveScroll,
 })
