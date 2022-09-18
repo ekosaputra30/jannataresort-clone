@@ -29,6 +29,10 @@ section {
   padding: 50px 0;
 
   @include media_breakpoint(md) {
+    padding: 75px 0;
+  }
+
+  @include media_breakpoint(lg) {
     padding: 150px 0 100px;
   }
 
@@ -46,6 +50,12 @@ section {
       right: 20px;
     }
     @include media_breakpoint(md) {
+      padding: {
+        left: 6rem;
+        right: 6rem;
+      }
+    }
+    @include media_breakpoint(lg) {
       padding: {
         left: 12rem;
         right: 12rem;
