@@ -76,7 +76,6 @@ export default {
           scrub: 1,
           start: 'top bottom',
           end: '+=100%',
-          markers: true,
           toggleActions: 'play none reverse none',
         },
       })
