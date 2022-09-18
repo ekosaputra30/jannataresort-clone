@@ -205,7 +205,7 @@ export default {
 .section__footerblock {
   background: linear-gradient(0deg, #679334, #bbd531);
   padding: 100px 0 90px;
-  @include media-breakpoint(md) {
+  @include media-breakpoint(lg) {
     background: linear-gradient(90deg, #679334, #bbd531);
   }
 }
@@ -214,7 +214,7 @@ export default {
   .bottom {
     margin-top: 35px;
   }
-  @include media-breakpoint(md) {
+  @include media-breakpoint(lg) {
     justify-content: space-between;
 
     .bottom {
@@ -243,7 +243,7 @@ export default {
   }
   &__right {
     margin-top: 35px;
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       margin-top: 0;
     }
   }
@@ -256,7 +256,7 @@ export default {
   font-family: 'GFS Didot';
   font-size: 35px;
   line-height: 45px;
-  @include media-breakpoint(md) {
+  @include media-breakpoint(lg) {
     font-size: 54px;
     line-height: 64px;
   }
@@ -274,7 +274,7 @@ export default {
     height: 1px;
     margin: 0 10px;
     width: 90px;
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       bottom: 7px;
       width: 140px;
     }

@@ -108,7 +108,7 @@ export default {
   }
   position: relative;
   z-index: 1;
-  @include media-breakpoint(md) {
+  @include media-breakpoint(lg) {
     padding: {
       bottom: 80px;
       top: 50px;
@@ -128,7 +128,7 @@ export default {
       bottom: 30px;
       top: 50px;
     }
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       justify-content: center;
       padding: {
         bottom: 0px;
@@ -143,7 +143,7 @@ export default {
     color: var(--resort-color);
   }
   &__title {
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       margin-top: 100px;
     }
   }

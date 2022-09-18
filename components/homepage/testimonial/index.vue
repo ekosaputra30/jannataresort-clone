@@ -64,7 +64,7 @@ export default {
   background-color: var(--stay-color);
 }
 .testi {
-  @include media-breakpoint(md) {
+  @include media-breakpoint(lg) {
     justify-content: center;
   }
 }
@@ -92,7 +92,7 @@ export default {
     font-family: 'Playfair Display';
     line-height: 24px;
     margin-bottom: 30px;
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       font-size: 20px;
       line-height: 36px;
       text-align: center;
@@ -101,7 +101,7 @@ export default {
   span {
     display: block;
     text-align: center;
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       font-size: 15px;
     }
   }

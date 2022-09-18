@@ -170,7 +170,7 @@ export default {
         }
         text-align: center;
       }
-      @include media-breakpoint(md) {
+      @include media-breakpoint(lg) {
         width: calc(100% - 10px);
         &--white {
           padding: {
@@ -245,7 +245,7 @@ export default {
   &__children {
     margin-bottom: 15px;
   }
-  @include media-breakpoint(md) {
+  @include media-breakpoint(lg) {
     &__adults {
       padding-right: 10px;
     }

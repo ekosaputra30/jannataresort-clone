@@ -176,12 +176,12 @@ export default {
           width: 55% !important;
           transition: all 0.3s;
         }
-        @include media-breakpoint(md) {
+        @include media-breakpoint(lg) {
           left: 17%;
         }
       }
     }
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       height: 450px;
       margin: 0 auto 0;
       padding-bottom: 70px;
@@ -209,7 +209,7 @@ export default {
       width: 30%;
       transition: all 0.3s;
     }
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       left: 20%;
     }
   }
@@ -242,7 +242,7 @@ export default {
       transition: all 0.3s;
       z-index: 2;
     }
-    @include media-breakpoint(md) {
+    @include media-breakpoint(lg) {
       background-size: auto 100%;
     }
   }
