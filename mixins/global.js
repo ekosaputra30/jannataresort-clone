@@ -6,7 +6,6 @@ export default {
   data() {
     return {
       locoScroll: undefined,
-      mainTL: undefined,
     }
   },
 
@@ -37,9 +36,9 @@ export default {
 
         this.smooth(this.locoScroll, this.$refs.locoScroll)
 
-        setTimeout(() => {
-          this.locoScroll.update()
-        }, 1000)
+        // setTimeout(() => {
+        //   this.locoScroll.update()
+        // }, 1000)
       }
     },
     smooth(scroll, el) {
@@ -76,19 +75,6 @@ export default {
       elements.forEach((el) => {
         observer.observe(el)
       })
-    },
-    initTimeline(el) {
-      this.mainTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          scrub: 1,
-          start: 'top bottom',
-          end: '+=400',
-          toggleActions: 'play none reverse none',
-        },
-      })
-
-      return this.mainTL
     },
   },
   updated() {
