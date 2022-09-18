@@ -1,6 +1,7 @@
 <template>
   <!-- banner section -->
   <section v-if="dataSliders" id="banner_section" class="banner_section">
+    <Header />
     <div
       ref="q_slide"
       autoplay
@@ -96,6 +97,7 @@
 
 <script>
 import { gsap, Expo, Power3, Power4 } from 'gsap'
+import Header from '~/components/header'
 
 export default {
   name: 'HeroSlider',
@@ -127,19 +129,16 @@ export default {
     },
     run: function () {
       let slide = this.$refs.q_slide
-
       if (slide) this.setup(slide)
     },
     pageUpdate: function () {
       let slide = this.$refs.q_slide
       const pagination = slide.querySelector('.pagination')
-
       if (pagination) {
         var pages = pagination.querySelectorAll('.item')
         var activePage = pagination.querySelector('.q_current')
         var newSlide = slide.querySelector('.is-new')
         var index = this.indexInParent(newSlide)
-
         activePage.classList.remove('q_current')
         pages[index].classList.add('q_current')
       }
@@ -148,15 +147,12 @@ export default {
       slide.classList.add('q_slide')
       const slides = slide.querySelectorAll('.slide')
       const pagination = slide.querySelector('.pagination')
-
       if (slide.getAttribute('parallax') != null) {
         this.q_slideFriction = slide.getAttribute('parallax') || 0.25
       }
-
       if (slide.getAttribute('opacity') != null) {
         this.slideOpacity = slide.getAttribute('opacity') || 0.6
       }
-
       // if (pagination) {
       //   var pages = pagination.querySelectorAll('.item')
       //   for (var i = pages.length - 1; i >= 0; i--) {
@@ -190,7 +186,6 @@ export default {
         if (!newSlide) newSlide = slides[0]
       }
       this.q_slideSwitch(q_slide, this.indexInParent(newSlide), auto)
-
       this.triggerResize()
     },
     q_slideSwitch: function (q_slide, index, auto) {
@@ -198,10 +193,8 @@ export default {
         if (index >= 0 && index < this.length) return this[index]
         else return -1
       }
-
       const slides = q_slide.querySelectorAll('.slide')
       if (q_slide.getAttribute('wait') === 'true') return
-
       let activeSlide = q_slide.querySelector('.q_current')
       let activeSlideImage = activeSlide.querySelector('.image-container')
       let newSlide = eq.call(slides, index)
@@ -211,15 +204,11 @@ export default {
       let newSlideElementsTwo = newSlide.querySelectorAll('.caption > h2')
       let newSlideElementsThree = newSlide.querySelectorAll('.caption > p')
       let newSlideElementsLink = newSlide.querySelectorAll('.caption > .link')
-
       if (newSlide === activeSlide) return
-
       newSlide.classList.add('is-new')
-
       let timeout = 0
       clearTimeout(timeout)
       this.pageUpdate()
-
       q_slide.setAttribute('wait', 'true')
       let newSlideRight = ''
       let newSlideLeft = 0
@@ -230,7 +219,6 @@ export default {
         q_slide.clientWidth * this.q_slideFriction + 'px'
       let sideAnim = 'sideRight'
       let splitAnim = 'splitRight'
-
       if (this.indexInParent(newSlide) > this.indexInParent(activeSlide)) {
         // next slide
         newSlideRight = 0
@@ -254,26 +242,20 @@ export default {
         sideAnim = 'sideRight'
         splitAnim = 'splitRight'
       }
-
       newSlide.style.display = 'block'
       newSlide.style.width = 0
       newSlide.style.right = newSlideRight
       newSlide.style.left = newSlideLeft
       newSlide.style.zIndex = 2
-
       newSlideImage.style.width = q_slide.clientWidth + 'px'
       activeSlideImage.style.transform = 'translateX(0)'
-
       gsap.set(newSlideImage, { x: newSlideImageLeft })
-
       if (this.slideOpacity) {
         newSlideImage.style.opacity = this.slideOpacity
       }
-
       newSlideContent.style.width = q_slide.clientWidth + 'px'
       newSlideContent.style.right = newSlideContentRight
       newSlideContent.style.left = newSlideContentLeft
-
       if (this.slideOpacity) {
         gsap.to(activeSlideImage, {
           x: activeSlideImageLeft,
@@ -288,13 +270,11 @@ export default {
           duration: 1.5,
         })
       }
-
       gsap.to(newSlide, {
         width: q_slide.clientWidth,
         ease: Expo.easeInOut,
         duration: 1.5,
       })
-
       gsap.to(newSlideImage, {
         x: 0,
         opacity: 1,
@@ -315,21 +295,17 @@ export default {
           newSlideContent.removeAttribute('style')
           activeSlideImage.removeAttribute('style')
           q_slide.setAttribute('wait', 'false')
-
           if (auto) {
             this.autoPlay()
           }
         },
       })
-
       // caption animation
       if (q_slide.getAttribute('animate') != null) {
         let animation = q_slide.getAttribute('animate') || 'stagTop'
-
         if (q_slide.getAttribute('animate') === 'side') {
           animation = sideAnim
         }
-
         let letters = newSlide.querySelectorAll('.q_splitText')
         if (letters) {
           for (let i = letters.length - 1; i >= 0; i--) {
@@ -337,7 +313,6 @@ export default {
             this.q_animate(letter, splitAnim, 100)
           }
         }
-
         // this.q_animate(newSlideElements, animation, 0.3)
         this.q_animate(newSlideElementsTwo, animation, 0.3)
         this.q_animate(newSlideElementsThree, animation, 0.9)
@@ -359,7 +334,6 @@ export default {
           }
         )
       }
-
       if (animation === 'slideTop') {
         gsap.fromTo(
           element,
@@ -404,15 +378,11 @@ export default {
         var content = element.textContent
         var letters = content.split('')
         element.innerHTML = ''
-
         for (var idx = 0; idx < letters.length; idx++) {
           element.innerHTML += '<span>' + letters[idx] + '</span>'
         }
-
         var chars = element.querySelectorAll('span')
-
         gsap.set(chars, { x: 110, alpha: 0 })
-
         setTimeout(function () {
           gsap.to(chars, {
             x: 0,
@@ -426,16 +396,12 @@ export default {
         var content = element.textContent
         var letters = content.split('')
         element.innerHTML = ''
-
         for (var idx = 0; idx < letters.length; idx++) {
-          const char = letters[idx] === ' ' ? '\xa0' : letters[idx]
+          const char = letters[idx] === ' ' ? ' ' : letters[idx]
           element.innerHTML += '<span>' + char + '</span>'
         }
-
         var chars = element.querySelectorAll('span')
-
         gsap.set(chars, { x: -110, alpha: 0 })
-
         setTimeout(function () {
           gsap.to(chars, {
             x: 0,
@@ -450,7 +416,6 @@ export default {
     clickPaging: function (e) {
       let slide = this.$refs.q_slide
       let pagination = slide.querySelector('.pagination')
-
       if (pagination) {
         this.q_slideSwitch(slide, this.indexInParent(e.target))
         this.triggerResize()
@@ -459,15 +424,18 @@ export default {
     clickNav: function (e, state) {
       let slide = this.$refs.q_slide
       let navigation = slide.querySelector('.navigation')
-
       if (navigation) {
         this.q_slideNext(slide, state)
       }
     },
   },
+  components: { Header },
 }
 </script>
 
 <style lang="scss">
 @import '~/utils/plugins/heroslider/style.scss';
+.banner__section {
+  position: relative;
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
   <section class="section__footerblock">
     <div class="container section--inner">
-      <div class="row flex-column flex-lg-row footer">
-        <div class="w-12 w-lg-6">
+      <div class="row flex-column flex-md-row footer">
+        <div class="w-12 w-md-6">
           <div class="footer__left flex-column">
             <div class="top">
               <div class="timeblock row">
@@ -11,7 +11,7 @@
               </div>
               <div class="temperature">{{ `${suhu}${formatsuhu}` }}</div>
             </div>
-            <div class="bottom d-none flex-column d-lg-flex">
+            <div class="bottom d-none flex-column d-md-flex">
               <ul class="row socmed">
                 <li>
                   <a href="">
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <div class="w-12 w-lg-4">
+        <div class="w-12 w-md-4">
           <div class="footer__right flex-column">
             <div class="top">
               <h4>OUR ADDRESS</h4>
@@ -83,7 +83,7 @@
                 </li>
               </ul>
             </div>
-            <div class="bottom d-flex flex-column d-lg-none">
+            <div class="bottom d-flex flex-column d-md-none">
               <ul class="row socmed">
                 <li>
                   <a href="">

@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="reservation__formblock input row">
-            <div class="w-12 w-lg-6 input__adults">
+            <div class="w-12 w-md-6 input__adults">
               <label>adult(s)</label>
               <div class="block">
                 <div class="input__increase input__adults_increase">-</div>
@@ -40,7 +40,7 @@
                 <div class="input__decrease input__adults_decrease">+</div>
               </div>
             </div>
-            <div class="w-12 w-lg-6 input__children">
+            <div class="w-12 w-md-6 input__children">
               <label>children</label>
               <div class="block">
                 <div class="input__increase input__children_increase">-</div>
@@ -50,12 +50,12 @@
             </div>
           </div>
           <div class="reservation__formbutton row">
-            <div class="w-12 w-lg-6">
+            <div class="w-12 w-md-6">
               <a href="" class="btn btn--green-fill"
                 >Rates &amp; Availability</a
               >
             </div>
-            <div class="w-12 w-lg-6">
+            <div class="w-12 w-md-6">
               <a href="" class="btn btn--white">Discover Our Exclusive Deals</a>
             </div>
           </div>

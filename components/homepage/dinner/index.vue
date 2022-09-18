@@ -120,10 +120,13 @@ export default {
     padding: 30px;
     width: calc(100% - 40px);
     @include media-breakpoint(md) {
-      padding: 50px 60px 70px;
+      padding: 35px 50px;
       position: absolute;
       right: 0;
       width: 54%;
+    }
+    @include media-breakpoint(lg) {
+      padding: 50px 60px 70px;
     }
   }
   &__title,

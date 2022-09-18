@@ -1,8 +1,8 @@
 <template>
-  <section v-if="datastay" class="section section__thestay">
+  <section v-if="datastay" class="section section__thestay" ref="thestayel">
     <div class="container section--inner">
-      <div class="row thestay" ref="thestayel">
-        <div class="w-12 w-offset-lg-6">
+      <div class="row thestay">
+        <div class="w-12 w-offset-md-6">
           <div class="row flex-column thestay__content align-center h-100">
             <div class="thestay__title section__headline | js-content-trigger">
               <h2 v-html="datastay.title"></h2>
@@ -13,11 +13,11 @@
           </div>
         </div>
         <div class="w-12">
-          <div class="slider d-flex flex-column flex-lg-row">
+          <div class="slider d-flex flex-column flex-md-row">
             <div
               v-for="(slider, index) in datastay.dataSlider"
               :key="index"
-              class="w-lg-4 slider__column"
+              class="w-md-4 slider__column"
             >
               <a
                 :href="slider.link.url"
@@ -74,7 +74,7 @@ export default {
         scrollTrigger: {
           trigger: this.$refs.thestayel,
           scrub: 1,
-          start: 'top bottom',
+          start: 'top bottom-=10%',
           end: '+=100%',
           toggleActions: 'play none reverse none',
         },

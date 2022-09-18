@@ -1,14 +1,14 @@
 <template>
   <section class="section section__theresort">
     <div v-if="dataresort" class="container section--inner">
-      <div class="row row-lg-reverse theresort">
+      <div class="row row-md-reverse theresort">
         <div
           class="rectangle"
           ref="rectangle"
           data-scroll
           data-scroll-speed="-1"
         ></div>
-        <div class="w-12 w-lg-6">
+        <div class="w-12 w-md-6">
           <div
             class="row flex-column theresort__content h-100"
             ref="theresort__content"
@@ -30,7 +30,7 @@
             </div>
           </div>
         </div>
-        <div class="w-12 w-lg-6">
+        <div class="w-12 w-md-6">
           <div class="theresort__image" ref="theresort__image">
             <img
               data-scroll
@@ -118,9 +118,14 @@ export default {
       height: calc(100% - 130px);
       position: absolute;
       top: 60px;
-      right: -10%;
+      right: -5%;
       width: 80%;
       z-index: -1;
+    }
+  }
+  @include media-breakpoint(md) {
+    .rectangle {
+      right: -10%;
     }
   }
   &__content {
