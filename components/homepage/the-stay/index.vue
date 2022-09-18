@@ -1,13 +1,13 @@
 <template>
   <section v-if="datastay" class="section section__thestay">
     <div class="container section--inner">
-      <div class="row thestay">
+      <div class="row thestay" ref="thestayel">
         <div class="w-12 w-offset-lg-6">
           <div class="row flex-column thestay__content align-center h-100">
-            <div class="thestay__title section__headline">
+            <div class="thestay__title section__headline | js-content-trigger">
               <h2 v-html="datastay.title"></h2>
             </div>
-            <div class="thestay__description">
+            <div class="thestay__description | js-content-trigger">
               <p v-html="datastay.description"></p>
             </div>
           </div>
@@ -45,15 +45,47 @@
   </section>
 </template>
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'TheStay',
   props: ['datastay'],
   data() {
     return {
       hoverBG: false,
+      mainTL: null,
+      contentTriggers: [],
     }
   },
+  mounted() {
+    this.contentTriggers = this.$el.querySelectorAll('.js-content-trigger')
+  },
+  created() {
+    if (this.datastay) this.theMotion()
+  },
+  updated() {
+    this.theMotion()
+  },
   methods: {
+    theMotion() {
+      this.mainTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.thestayel,
+          scrub: 1,
+          start: 'top bottom',
+          end: '+=100%',
+          toggleActions: 'play none reverse none',
+        },
+      })
+
+      this.mainTL.fromTo(
+        this.contentTriggers,
+        { y: '50px', autoAlpha: 0, immediateRender: false },
+        { y: '0', autoAlpha: 1, duration: 1, delay: 2, stagger: 1 }
+      )
+    },
     hoverBgItem(e) {
       let thisItem = e.target
       let thisBg = thisItem

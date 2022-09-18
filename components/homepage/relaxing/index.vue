@@ -2,8 +2,10 @@
   <section
     v-if="datarelaxing"
     class="section section--bgimage section__relaxing"
+    ref="relaxingel"
   >
     <div
+      ref="bg"
       class="bg"
       v-bind:style="{
         'background-image': `url(${datarelaxing.featured.aws_file_url}/${datarelaxing.featured.path}/${datarelaxing.featured.filename.big})`,
@@ -12,18 +14,18 @@
     <div class="container section--inner">
       <div class="row relaxing">
         <div class="row flex-column relaxing__content">
-          <div class="relaxing__title section__headline">
+          <div class="relaxing__title section__headline | js-content-trigger">
             <h2>
               <span v-html="datarelaxing.title"></span>
             </h2>
           </div>
-          <div class="relaxing__description">
+          <div class="relaxing__description | js-content-trigger">
             <p v-html="datarelaxing.description"></p>
           </div>
-          <div class="relaxing__link">
+          <div class="relaxing__link | js-content-trigger">
             <a
               :href="datarelaxing.link.url"
-              class="btn btn--white"
+              class="btn btn--white btn--hover-underline"
               v-html="datarelaxing.link.title"
             ></a>
           </div>
@@ -33,11 +35,62 @@
   </section>
 </template>
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'TheRelaxing',
   props: ['datarelaxing'],
   data() {
-    return {}
+    return {
+      mainTL: null,
+      contentTriggers: [],
+    }
+  },
+  created() {
+    if (this.datarelaxing) this.theMotion()
+  },
+  updated() {
+    this.theMotion()
+  },
+  methods: {
+    getRatio(el) {
+      window.innerHeight / (window.innerHeight + el.offsetHeight)
+    },
+    theMotion() {
+      let bg = this.$refs.bg
+      this.contentTriggers = this.$el.querySelectorAll('.js-content-trigger')
+      this.mainTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.relaxingel,
+          scrub: false,
+          start: 'center bottom',
+          // end: '+=200%',
+          // toggleActions: 'play none reverse none',
+          onUpdate: function (self) {
+            gsap.set(bg, { top: self.scroll() - bg.parentElement.offsetTop })
+          },
+        },
+      })
+
+      this.mainTL
+        .fromTo(
+          bg,
+          {
+            backgroundPosition: `50% 0px`,
+          },
+          {
+            backgroundPosition: `50% ${-innerHeight / 2}`,
+            ease: 'none',
+          }
+        )
+        .fromTo(
+          this.contentTriggers,
+          { y: '50px', autoAlpha: 0 },
+          { y: '0', autoAlpha: 1, duration: 1, stagger: 0.2 }
+        )
+    },
   },
 }
 </script>

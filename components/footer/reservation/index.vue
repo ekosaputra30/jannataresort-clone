@@ -1,6 +1,10 @@
 <template>
-  <section class="section section--bgimage section__reservation">
+  <section
+    class="section section--bgimage section__reservation"
+    ref="reservationel"
+  >
     <div
+      ref="bg"
       class="bg"
       v-bind:style="{
         'background-image': `url(${bgImage})`,
@@ -61,14 +65,53 @@
   </section>
 </template>
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'Reservation',
   data() {
     return {
+      mainTL: null,
       bgImage: '/img/bg-reservation.jpg',
     }
   },
+  mounted() {
+    this.theMotion()
+  },
+  created() {},
+  updated() {
+    // this.theMotion()
+  },
   methods: {
+    getRatio(el) {
+      window.innerHeight / (window.innerHeight + el.offsetHeight)
+    },
+    theMotion() {
+      let bg = this.$refs.bg
+      this.mainTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.reservationel,
+          scrub: false,
+          start: 'center bottom',
+          onUpdate: function (self) {
+            gsap.set(bg, { top: self.scroll() - bg.parentElement.offsetTop })
+          },
+        },
+      })
+
+      this.mainTL.fromTo(
+        bg,
+        {
+          backgroundPosition: `50% 0px`,
+        },
+        {
+          backgroundPosition: `50% ${-innerHeight / 2}`,
+          ease: 'none',
+        }
+      )
+    },
     triggerCalendar(event) {
       let datepicker = event.target
       return datepicker.showPicker()
