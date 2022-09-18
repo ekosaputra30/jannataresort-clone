@@ -42,7 +42,7 @@ export default {
       }
     }
   }
-  @include media-breakpoint(lg) {
+  @include media-breakpoint(md) {
     height: auto;
     &__logo {
       align-items: center;

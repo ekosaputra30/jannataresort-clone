@@ -119,7 +119,7 @@ export default {
     margin: 0 auto;
     padding: 30px;
     width: calc(100% - 40px);
-    @include media-breakpoint(lg) {
+    @include media-breakpoint(md) {
       padding: 50px 60px 70px;
       position: absolute;
       right: 0;
@@ -151,11 +151,11 @@ export default {
       &:last-child {
         color: white;
       }
-      @include media-breakpoint(lg) {
+      @include media-breakpoint(md) {
         font-size: 35px;
       }
     }
-    @include media-breakpoint(lg) {
+    @include media-breakpoint(md) {
       margin-bottom: 80px;
       &:after {
         bottom: -35px;

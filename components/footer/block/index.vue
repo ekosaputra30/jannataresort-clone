@@ -1,8 +1,8 @@
 <template>
   <section class="section__footerblock">
     <div class="container section--inner">
-      <div class="row flex-column flex-lg-row footer">
-        <div class="w-12 w-lg-6">
+      <div class="row flex-column flex-md-row footer">
+        <div class="w-12 w-md-6">
           <div class="footer__left flex-column">
             <div class="top">
               <div class="timeblock row">
@@ -11,7 +11,7 @@
               </div>
               <div class="temperature">{{ `${suhu}${formatsuhu}` }}</div>
             </div>
-            <div class="bottom d-none flex-column d-lg-flex">
+            <div class="bottom d-none flex-column d-md-flex">
               <ul class="row socmed">
                 <li>
                   <a href="">
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <div class="w-12 w-lg-4">
+        <div class="w-12 w-md-4">
           <div class="footer__right flex-column">
             <div class="top">
               <h4>OUR ADDRESS</h4>
@@ -83,7 +83,7 @@
                 </li>
               </ul>
             </div>
-            <div class="bottom d-flex flex-column d-lg-none">
+            <div class="bottom d-flex flex-column d-md-none">
               <ul class="row socmed">
                 <li>
                   <a href="">
@@ -205,7 +205,7 @@ export default {
 .section__footerblock {
   background: linear-gradient(0deg, #679334, #bbd531);
   padding: 100px 0 90px;
-  @include media-breakpoint(lg) {
+  @include media-breakpoint(md) {
     background: linear-gradient(90deg, #679334, #bbd531);
   }
 }
@@ -214,7 +214,7 @@ export default {
   .bottom {
     margin-top: 35px;
   }
-  @include media-breakpoint(lg) {
+  @include media-breakpoint(md) {
     justify-content: space-between;
 
     .bottom {
@@ -243,7 +243,7 @@ export default {
   }
   &__right {
     margin-top: 35px;
-    @include media-breakpoint(lg) {
+    @include media-breakpoint(md) {
       margin-top: 0;
     }
   }
@@ -256,7 +256,7 @@ export default {
   font-family: 'GFS Didot';
   font-size: 35px;
   line-height: 45px;
-  @include media-breakpoint(lg) {
+  @include media-breakpoint(md) {
     font-size: 54px;
     line-height: 64px;
   }
@@ -274,7 +274,7 @@ export default {
     height: 1px;
     margin: 0 10px;
     width: 90px;
-    @include media-breakpoint(lg) {
+    @include media-breakpoint(md) {
       bottom: 7px;
       width: 140px;
     }
