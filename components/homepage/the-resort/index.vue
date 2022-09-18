@@ -2,15 +2,26 @@
   <section class="section section__theresort">
     <div v-if="dataresort" class="container section--inner">
       <div class="row row-lg-reverse theresort">
+        <div
+          class="rectangle"
+          ref="rectangle"
+          data-scroll
+          data-scroll-speed="-1"
+        ></div>
         <div class="w-12 w-lg-6">
-          <div class="row flex-column theresort__content h-100">
-            <div class="theresort__title section__headline">
+          <div
+            class="row flex-column theresort__content h-100"
+            ref="theresort__content"
+          >
+            <div
+              class="theresort__title section__headline | js-content-trigger"
+            >
               <h2 v-html="dataresort.title"></h2>
             </div>
-            <div class="theresort__description">
+            <div class="theresort__description | js-content-trigger">
               <p v-html="dataresort.description"></p>
             </div>
-            <div class="theresort__link">
+            <div class="theresort__link | js-content-trigger">
               <a
                 :href="dataresort.link.url"
                 class="btn btn--green btn--hover-underline"
@@ -20,8 +31,10 @@
           </div>
         </div>
         <div class="w-12 w-lg-6">
-          <div class="theresort__image">
+          <div class="theresort__image" ref="theresort__image">
             <img
+              data-scroll
+              data-scroll-speed="-0.95"
               :src="`${dataresort.featured.aws_file_url}/${dataresort.featured.path}/${dataresort.featured.filename.big}`"
               :alt="dataresort.description"
             />
@@ -32,11 +45,53 @@
   </section>
 </template>
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'TheResort',
   props: ['dataresort'],
   data() {
-    return {}
+    return {
+      mainTL: null,
+    }
+  },
+  created() {
+    if (this.dataresort) this.theMotion()
+  },
+  updated() {
+    this.theMotion()
+  },
+  methods: {
+    theMotion() {
+      this.mainTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.rectangle,
+          scrub: 1,
+          start: 'top bottom',
+          end: '+=100%',
+          toggleActions: 'play none reverse none',
+        },
+      })
+
+      this.mainTL
+        .fromTo(
+          this.$refs.theresort__image,
+          {
+            clipPath: 'inset(0 100% 0 0)',
+            immediateRender: false,
+            autoAlpha: 0,
+            x: '-40px',
+          },
+          { clipPath: 'inset(0 0% 0 0)', autoAlpha: 1, x: '0', duration: 1 }
+        )
+        .fromTo(
+          this.$el.querySelectorAll('.js-content-trigger'),
+          { y: '50px', autoAlpha: 0 },
+          { y: '0', autoAlpha: 1, duration: 1, delay: 2, stagger: 1 }
+        )
+    },
   },
 }
 </script>
@@ -58,9 +113,7 @@ export default {
       bottom: 80px;
       top: 50px;
     }
-    &:before {
-      content: '';
-
+    .rectangle {
       background-color: #d8d6e2;
       height: calc(100% - 130px);
       position: absolute;
@@ -95,9 +148,10 @@ export default {
     }
   }
   &__image {
+    overflow: hidden;
     img {
       height: auto;
-      max-width: 100%;
+      max-width: 115%;
     }
   }
 }
