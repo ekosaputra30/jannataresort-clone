@@ -1,5 +1,5 @@
 <template>
-  <main class="main" data-scroll-container>
+  <main class="main" ref="locoScroll" data-scroll-container>
     <Heroslider
       data-scroll-section
       data-scroll
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import global from '~/mixins/global.js'
 import homepageServices from '~/core/services/homepage'
 import Heroslider from '~/components/homepage/heroslider'
 import TheResort from '~/components/homepage/the-resort'
@@ -52,6 +53,7 @@ import Footer from '~/components/footer'
 
 export default {
   name: 'IndexPage',
+  mixins: [global],
   components: {
     Heroslider,
     TheResort,
@@ -69,7 +71,6 @@ export default {
       dinner: null,
       relaxing: null,
       testimonials: [],
-      scroller: null,
     }
   },
   methods: {
@@ -87,21 +88,9 @@ export default {
         console.log(error)
       }
     },
-    initScroller() {
-      this.scroller = new this.locomotiveScroll({
-        el: document.querySelector('[data-scroll-container]'),
-        smooth: true,
-      })
-    },
   },
   created() {
     this.getHomepage()
-  },
-  mounted() {
-    this.initScroller()
-  },
-  updated() {
-    this.scroller.update()
   },
 }
 </script>
