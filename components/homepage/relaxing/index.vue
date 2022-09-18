@@ -48,9 +48,6 @@ export default {
       contentTriggers: [],
     }
   },
-  mounted() {
-    // this.contentTriggers = this.$el.querySelectorAll('.js-content-trigger')
-  },
   created() {
     if (this.datarelaxing) this.theMotion()
   },
